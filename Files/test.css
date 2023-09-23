@@ -1,0 +1,8 @@
+
+@keyframes scalex {
+  from { transform: scale(1); }
+  to { transform: scale(5); }
+}
+.rect scale {
+    animation: scalex 2s linear infinite;;
+}

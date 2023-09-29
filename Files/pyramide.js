@@ -50,27 +50,3 @@ var delta = clock.getDelta();
 group.rotation.y += delta * 0.3;
 renderer.render( scene, camera );
 }
-function removeChildrenFromNode(node) {
-var fc = node.firstChild;
-while( fc ) {
-node.removeChild( fc );
-fc = node.firstChild;
-}
-}
-function svgSnapshot() {
-var svgContainer = document.getElementById('svg');
-removeChildrenFromNode(svgContainer);
-var width = window.innerWidth;
-var height = window.innerHeight;
-svgRenderer = new THREE.SVGRenderer();
-svgRenderer.setClearColor( 0xffffff );
-svgRenderer.setSize(width,height );
-svgRenderer.setQuality( 'high' );
-svgContainer.appendChild( svgRenderer.domElement );
-svgRenderer.render( scene, camera );
-var svg = svgContainer.innerHTML;
-svg = svg.replace('<svg ', '<svg id="svg2" xmlns="http://www.w3.org/2000/svg" ');
-var svgDataURI = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
-document.getElementById('svg2').src = svgDataURI;
-}
-
